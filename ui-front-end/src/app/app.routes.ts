@@ -11,13 +11,14 @@ import { AnalyticsComponent } from './features/analytics/analytics.component';
 import { ServiceTypesComponent } from './features/service-types/service-types.component';
 import { ProfileComponent } from './features/profile/profile.component';
 import { SignInComponent } from './auth/components/signin.component';
-import { authGuard, publicGuard } from './auth/guards/auth.guard';
+import { authGuard, publicGuard, publicLayoutGuard } from './auth/guards/auth.guard';
 
 export const routes: Routes = [
-    // Public routes (no authentication required)
+    // Public routes (no authentication required - redirects authenticated users to dashboard)
     {
         path: '',
         component: PublicLayoutComponent,
+        canActivate: [publicLayoutGuard],
         children: [
             { path: '', component: PublicHomeComponent },
             { path: 'public/services', component: PublicServicesComponent },
