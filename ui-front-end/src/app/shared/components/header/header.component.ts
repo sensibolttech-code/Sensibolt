@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive, Router } from '@angular/router';
+import { AuthService } from '../../../auth/services/auth.service';
 
 interface NavItem {
     label: string;
@@ -28,7 +29,8 @@ export class HeaderComponent {
     ]);
 
     constructor(
-        private router: Router
+        private router: Router,
+        private authService: AuthService
     ) { }
 
     toggleMenu(): void {
@@ -47,9 +49,27 @@ export class HeaderComponent {
         this.showUserMenu.set(false);
     }
 
-    signOut(): void {
+    logout(): void {
+        this.authService.signOut();
+        if (typeof window !== 'undefined') {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+        }
         this.closeMenu();
         this.closeUserMenu();
-        this.router.navigate(['/auth/signin']);
+        this.router.navigate(['/']);
+    }
+
+    clearCache(): void {
+        if (typeof window !== 'undefined') {
+            localStorage.clear();
+            sessionStorage.clear();
+        }
+        this.closeMenu();
+        this.closeUserMenu();
+        this.router.navigate(['/']);
+        if (typeof window !== 'undefined') {
+            window.location.reload();
+        }
     }
 }

@@ -28,6 +28,24 @@
             </ul>
         </nav>
 
-
+        <!-- Account Dropdown (Dashboard Only) -->
+        <div class="account-menu">
+            <button class="account-toggle" (click)="toggleUserMenu()" aria-label="Toggle account menu">
+                <i class="pi pi-user"></i>
+                <span>Account</span>
+            </button>
+            <nav class="user-menu" [class.open]="showUserMenu()">
+                <ul class="user-menu-items">
+                    <li><a href="javascript:void(0)" (click)="logout()" class="menu-item">
+                            <i class="pi pi-sign-out"></i>
+                            <span>Sign Out</span>
+                        </a></li>
+                    <li><a href="javascript:void(0)" (click)="clearCache()" class="menu-item">
+                            <i class="pi pi-trash"></i>
+                            <span>Clear Cache</span>
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
 </header>

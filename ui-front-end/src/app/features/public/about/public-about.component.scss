@@ -41,13 +41,16 @@
         }
 
         .story-illustration {
-            .illustration-box {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            .story-image {
+                width: 100%;
+                height: auto;
                 border-radius: 1rem;
-                padding: 4rem;
-                text-align: center;
-                font-size: 5rem;
-                color: white;
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+                transition: transform 0.3s ease;
+
+                &:hover {
+                    transform: scale(1.02);
+                }
             }
         }
     }
