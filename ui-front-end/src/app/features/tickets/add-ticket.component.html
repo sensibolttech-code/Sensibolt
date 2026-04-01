@@ -1,0 +1,160 @@
+<div class="ticket-form-wrapper">
+    <div class="ticket-form-container">
+        <div class="form-header">
+            <h1>Create New Ticket</h1>
+            <p>Submit a new IT service request or incident</p>
+        </div>
+
+        <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()" class="ticket-form">
+
+            <!-- userId (Hidden Field) -->
+            <input type="hidden" formControlName="userId">
+
+            <!-- Ticket Type -->
+            <div class="form-group">
+                <label for="ticketType" class="form-label">
+                    Ticket Type <span class="required">*</span>
+                </label>
+                <select id="ticketType" formControlName="ticketType" class="form-control"
+                    [class.is-invalid]="submitted && f['ticketType'].errors">
+                    <option value="" disabled>-- Select Ticket Type --</option>
+                    @for (type of ticketTypes; track type.id) {
+                    <option [value]="type.id">{{ type.name }}</option>
+                    }
+                </select>
+                @if (submitted && f['ticketType'].errors) {
+                <div class="invalid-feedback">
+                    @if (f['ticketType'].errors['required']) {
+                    <span>Ticket type is required</span>
+                    }
+                </div>
+                }
+            </div>
+
+            <!-- Priority -->
+            <div class="form-group">
+                <label for="priority" class="form-label">
+                    Priority <span class="required">*</span>
+                </label>
+                <select id="priority" formControlName="priority" class="form-control"
+                    [class.is-invalid]="submitted && f['priority'].errors">
+                    <option value="" disabled>-- Select Priority --</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                    <option value="critical">Critical</option>
+                </select>
+                @if (submitted && f['priority'].errors) {
+                <div class="invalid-feedback">
+                    @if (f['priority'].errors['required']) {
+                    <span>Priority is required</span>
+                    }
+                </div>
+                }
+            </div>
+
+            <!-- Title -->
+            <div class="form-group">
+                <label for="title" class="form-label">
+                    Issue Title <span class="required">*</span>
+                </label>
+                <input type="text" id="title" formControlName="title" class="form-control"
+                    placeholder="Brief description of the issue" maxlength="100"
+                    [class.is-invalid]="submitted && f['title'].errors">
+                @if (submitted && f['title'].errors) {
+                <div class="invalid-feedback">
+                    @if (f['title'].errors['required']) {
+                    <span>Title is required</span>
+                    }
+                    @if (f['title'].errors['maxlength']) {
+                    <span>Title cannot exceed 100 characters</span>
+                    }
+                </div>
+                }
+            </div>
+
+            <!-- Description -->
+            <div class="form-group">
+                <label for="description" class="form-label">
+                    Description
+                </label>
+                <textarea id="description" formControlName="description" class="form-control" rows="4"
+                    placeholder="Provide detailed information about the issue" maxlength="2000"
+                    [class.is-invalid]="submitted && f['description'].errors">
+                </textarea>
+                <small class="form-text">
+                    {{ ticketForm.get('description')?.value?.length || 0 }}/2000
+                </small>
+                @if (submitted && f['description'].errors) {
+                <div class="invalid-feedback">
+                    @if (f['description'].errors['maxlength']) {
+                    <span>Description cannot exceed 2000 characters</span>
+                    }
+                </div>
+                }
+            </div>
+
+            <!-- Department -->
+            <div class="form-group">
+                <label for="department" class="form-label">
+                    Department
+                </label>
+                <select id="department" formControlName="department" class="form-control"
+                    [class.is-invalid]="submitted && f['department'].errors">
+                    <option value="">-- Select Department --</option>
+                    <option value="it-support">IT Support</option>
+                    <option value="application">Application Development</option>
+                    <option value="infrastructure">Infrastructure</option>
+                    <option value="security">Security</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+
+            <!-- Location -->
+            <div class="form-group">
+                <label for="location" class="form-label">
+                    Location
+                </label>
+                <!-- Attachment -->
+                <div class="form-group">
+                    <label for="attachment" class="form-label">
+                        Attachment
+                    </label>
+                    <div class="file-upload-group">
+                        <input type="file" #attachmentInput id="attachment" (change)="onFileSelected($event)"
+                            class="form-control-file" [class.is-invalid]="submitted && selectedFile === null">
+                        <small class="form-text">Accepted formats: PDF, JPG, PNG, GIF, WebP, DOC, DOCX (Max
+                            10MB)</small>
+                    </div>
+                    @if (previewUrl) {
+                    <div class="file-preview">
+                        <p>File selected: {{ selectedFile?.name }}</p>
+                    </div>
+                    }
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="pi pi-check"></i>
+                        Create Ticket
+                    </button>
+                    <button type="button" class="btn btn-secondary">
+                        <i class="pi pi-times"></i>
+                        Cancel
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary" [disabled]="ticketForm.invalid && submitted">
+                    Create Ticket
+                </button>
+                <button type="button" (click)="resetForm()" class="btn btn-secondary">
+                    Reset
+                </button>
+            </div>

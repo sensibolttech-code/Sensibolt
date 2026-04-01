@@ -1,0 +1,33 @@
+<header class="header">
+    <div class="header-container">
+        <div class="logo-section">
+            <h1 class="logo">Sensibolt</h1>
+        </div>
+
+        <!-- Hamburger Menu Button -->
+        <button class="hamburger" [class.open]="isMenuOpen()" (click)="toggleMenu()" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Navigation -->
+        <nav class="navbar" [class.open]="isMenuOpen()">
+            <ul class="nav-menu">
+                @for (item of navItems(); track item.route) {
+                <li class="nav-item">
+                    <a [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }"
+                        class="nav-link" (click)="closeMenu()">
+                        @if (item.icon) {
+                        <i [class]="'pi ' + item.icon"></i>
+                        }
+                        <span class="nav-label">{{ item.label }}</span>
+                    </a>
+                </li>
+                }
+            </ul>
+        </nav>
+
+
+    </div>
+</header>

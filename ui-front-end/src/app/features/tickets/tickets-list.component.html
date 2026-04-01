@@ -1,0 +1,59 @@
+<div class="tickets-container">
+    <div class="tickets-header">
+        <h1>IT Service Tickets</h1>
+        <p>View and manage all your IT service requests and incidents</p>
+    </div>
+
+    <div class="tickets-controls">
+        <div class="search-box">
+            <input type="text" placeholder="Search tickets by ID, title, or description..." class="search-input">
+        </div>
+        <div class="filter-controls">
+            <select class="filter-select">
+                <option>All Statuses</option>
+                <option>Open</option>
+                <option>In Progress</option>
+                <option>On Hold</option>
+                <option>Closed</option>
+            </select>
+            <select class="filter-select">
+                <option>All Priorities</option>
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+                <option>Critical</option>
+            </select>
+            <select class="filter-select">
+                <option>All Types</option>
+                <option>Bug Report</option>
+                <option>Feature Request</option>
+                <option>Support Request</option>
+                <option>Infrastructure Issue</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="tickets-content">
+        <div class="table-wrapper">
+            <table class="tickets-table">
+                <thead>
+                    <tr>
+                        <th>Ticket ID</th>
+                        <th>Title</th>
+                        <th>Type</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Created Date</th>
+                        <th>Assignee</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="8" class="empty-state">No tickets found</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

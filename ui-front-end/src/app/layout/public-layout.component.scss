@@ -1,0 +1,66 @@
+.public-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+
+    .navbar {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        .brand-logo {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #007bff;
+            display: flex;
+            align-items: center;
+
+            &:hover {
+                color: #0056b3;
+            }
+        }
+
+        .nav-link {
+            margin: 0 0.5rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+
+            &:hover,
+            &.active {
+                color: #007bff;
+            }
+        }
+
+        .btn-primary {
+            padding: 0.375rem 1rem;
+            font-weight: 500;
+        }
+    }
+
+    .public-content {
+        flex: 1;
+        padding: 2rem 0;
+    }
+
+    .public-footer {
+        margin-top: auto;
+        border-top: 1px solid #dee2e6;
+
+        .hover-link {
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: #007bff !important;
+            }
+        }
+
+        h5 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+    }
+}

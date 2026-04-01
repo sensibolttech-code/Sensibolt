@@ -1,0 +1,176 @@
+.public-about {
+    .about-hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-align: center;
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+    }
+
+    .story-section {
+        background: white;
+
+        .story-content {
+            h2 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                margin-bottom: 1.5rem;
+                color: #333;
+            }
+
+            p {
+                font-size: 1.1rem;
+                line-height: 1.8;
+                color: #666;
+                margin-bottom: 1.5rem;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .story-illustration {
+            .illustration-box {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                border-radius: 1rem;
+                padding: 4rem;
+                text-align: center;
+                font-size: 5rem;
+                color: white;
+            }
+        }
+    }
+
+    .mission-section {
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 3rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+                border-color: #667eea;
+            }
+
+            .value-icon {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            h5 {
+                font-weight: 600;
+                margin-bottom: 0.75rem;
+                color: #333;
+            }
+
+            p {
+                color: #666;
+                font-size: 0.95rem;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .why-choose-us {
+        background: white;
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .reason-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: #f8f9fa;
+                border-color: #667eea;
+            }
+
+            .reason-icon {
+                font-size: 1.75rem;
+                color: #667eea;
+                font-weight: 700;
+                flex-shrink: 0;
+                margin-top: 0.25rem;
+            }
+
+            .reason-content {
+                h5 {
+                    font-weight: 600;
+                    margin-bottom: 0.5rem;
+                    color: #333;
+                }
+
+                p {
+                    color: #666;
+                    font-size: 0.95rem;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    .team-section {
+        background: #f8f9fa;
+    }
+
+    .cta-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+
+        h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            opacity: 0.95;
+        }
+
+        .btn-primary {
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            background-color: white;
+            color: #667eea;
+            border-color: white;
+
+            &:hover {
+                background-color: #f0f0f0;
+                transform: translateY(-2px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+}
