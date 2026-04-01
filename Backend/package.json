@@ -1,0 +1,23 @@
+{
+    "name": "sensibolt-backend",
+    "version": "1.0.0",
+    "description": "Sensibolt IT Services Backend API",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node --watch server.js"
+    },
+    "keywords": [
+        "sensibolt",
+        "it-services",
+        "ticket-management"
+    ],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.18.2",
+        "jsonwebtoken": "^9.0.0"
+    },
+    "devDependencies": {}
+}

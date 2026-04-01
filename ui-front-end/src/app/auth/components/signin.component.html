@@ -1,0 +1,103 @@
+<div class="auth-wrapper">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>Sign In</h1>
+                <p>Welcome back to Sensibolt IT Services</p>
+            </div>
+
+            <!-- Error Message -->
+            @if (errorMessage) {
+            <div class="alert alert-danger">
+                <span class="alert-icon">✕</span>
+                {{ errorMessage }}
+            </div>
+            }
+
+            <form [formGroup]="signInForm" (ngSubmit)="onSubmit()" class="auth-form">
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email" class="form-label">
+                        Email Address <span class="required">*</span>
+                    </label>
+                    <input type="email" id="email" formControlName="email" class="form-control"
+                        placeholder="your.email@example.com" [class.is-invalid]="submitted && f['email'].errors">
+                    @if (submitted && f['email'].errors) {
+                    <div class="invalid-feedback">
+                        @if (f['email'].errors['required']) {
+                        <span>Email is required</span>
+                        }
+                        @if (f['email'].errors['email']) {
+                        <span>Please enter a valid email address</span>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <!-- Password Field -->
+                <div class="form-group">
+                    <label for="password" class="form-label">
+                        Password <span class="required">*</span>
+                    </label>
+                    <div class="password-input-group">
+                        <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
+                            class="form-control" placeholder="••••••••"
+                            [class.is-invalid]="submitted && f['password'].errors">
+                        <button type="button" class="password-toggle" (click)="togglePasswordVisibility()"
+                            [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
+                            {{ showPassword ? '👁️' : '👁️‍🗨️' }}
+                        </button>
+                    </div>
+                    @if (submitted && f['password'].errors) {
+                    <div class="invalid-feedback">
+                        @if (f['password'].errors['required']) {
+                        <span>Password is required</span>
+                        }
+                        @if (f['password'].errors['minlength']) {
+                        <span>Password must be at least 8 characters</span>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <!-- Remember Me (Optional) -->
+                <div class="form-check">
+                    <input type="checkbox" id="rememberMe" class="form-check-input">
+                    <label for="rememberMe" class="form-check-label">Remember me</label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="loading">
+                    {{ loading ? 'Signing in...' : 'Sign In' }}
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="auth-divider">
+                <span>Don't have an account?</span>
+            </div>
+
+            <!-- Sign Up Link -->
+            <button type="button" routerLink="/auth/register" class="btn btn-secondary btn-block">
+                Create New Account
+            </button>
+
+            <!-- Help Links -->
+            <div class="auth-footer">
+                <a href="#" class="help-link">Forgot Password?</a>
+            </div>
+        </div>
+
+        <!-- Illustration or Info Section -->
+        <div class="auth-info">
+            <h2>Sensibolt IT Services</h2>
+            <p>Manage and track IT service tickets efficiently</p>
+            <ul class="info-list">
+                <li>✓ Easy ticket creation</li>
+                <li>✓ Service type management</li>
+                <li>✓ Detailed analytics & reporting</li>
+                <li>✓ Secure and reliable</li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+<div class="public-layout">
+    <!-- Public Navigation Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a routerLink="/" class="navbar-brand">
+                <span class="brand-logo">⚙️</span>
+                <strong>Sensibolt</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                            class="nav-link">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/public/services" routerLinkActive="active" class="nav-link">
+                            Services
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/public/about" routerLinkActive="active" class="nav-link">
+                            About Us
+                        </a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        @if (isAuthenticated) {
+                        <button type="button" class="btn btn-danger btn-sm me-2" (click)="logout()">
+                            Sign Out
+                        </button>
+                        <button type="button" class="btn btn-warning btn-sm" (click)="clearCache()">
+                            Clear Cache
+                        </button>
+                        } @else {
+                        <a routerLink="/auth/signin" class="btn btn-primary btn-sm">
+                            Sign In
+                        </a>
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="public-content">
+        <router-outlet></router-outlet>
+    </main>
+
+    <!-- Public Footer -->
+    <footer class="public-footer bg-dark text-light mt-5">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>Sensibolt IT Services</h5>
+                    <p class="text-muted">Efficient ticket management and IT service solutions for your business.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a routerLink="/" class="text-decoration-none text-muted hover-link">Home</a></li>
+                        <li><a routerLink="/public/services"
+                                class="text-decoration-none text-muted hover-link">Services</a></li>
+                        <li><a routerLink="/public/about" class="text-decoration-none text-muted hover-link">About
+                                Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact</h5>
+                    <p class="text-muted">
+                        Email: info@sensibolt.com<br>
+                        Phone: +1 (555) 123-4567
+                    </p>
+                </div>
+            </div>
+            <hr class="bg-secondary">
+            <div class="text-center text-muted">
+                <p>&copy; 2026 Sensibolt IT Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</div>
