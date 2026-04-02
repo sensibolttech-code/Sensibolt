@@ -3,17 +3,40 @@
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
         text-align: center;
+        background-attachment: fixed;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+        }
 
         .hero-title {
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .hero-subtitle {
             font-size: 1.25rem;
-            opacity: 0.9;
+            opacity: 0.95;
             margin-bottom: 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
     }
 
@@ -29,12 +52,31 @@
             display: flex;
             flex-direction: column;
             height: 100%;
+            overflow: hidden;
+
+            .service-image-wrapper {
+                margin: -2rem -2rem 1.5rem -2rem;
+                border-radius: 0.75rem 0.75rem 0 0;
+                overflow: hidden;
+                height: 180px;
+
+                .service-image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.3s ease;
+                }
+            }
 
             &:hover {
                 transform: translateY(-5px);
                 box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
                 border-color: #667eea;
                 background: white;
+
+                .service-image {
+                    transform: scale(1.05);
+                }
             }
 
             .service-icon {

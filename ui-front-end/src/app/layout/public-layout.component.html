@@ -1,7 +1,7 @@
 <div class="public-layout">
     <!-- Public Navigation Header -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
+        <div class="container-fluid">
             <a routerLink="/" class="navbar-brand">
                 <span class="brand-logo">⚙️</span>
                 <strong>Sensibolt</strong>
@@ -10,36 +10,59 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <!-- Home Link -->
                     <li class="nav-item">
                         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
                             class="nav-link">
-                            Home
+                            <i class="pi pi-home"></i>
+                            <span>Home</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a routerLink="/public/services" routerLinkActive="active" class="nav-link">
-                            Services
+
+                    <!-- Services Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="servicesDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="pi pi-list"></i>
+                            <span>Services</span>
                         </a>
+                        <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                            <li><a class="dropdown-item" href="javascript:void(0)" (click)="navigateToServices()">
+                                    <i class="pi pi-exclamation-circle"></i> Incident Management
+                                </a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)" (click)="navigateToServices()">
+                                    <i class="pi pi-file-edit"></i> Service Request Management
+                                </a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)" (click)="navigateToServices()">
+                                    <i class="pi pi-refresh"></i> Change Management
+                                </a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)" (click)="navigateToServices()">
+                                    <i class="pi pi-search"></i> Problem Management
+                                </a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)" (click)="navigateToServices()">
+                                    <i class="pi pi-desktop"></i> Asset Management
+                                </a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)" (click)="navigateToServices()">
+                                    <i class="pi pi-book"></i> Knowledge Management
+                                </a></li>
+                        </ul>
                     </li>
+
+                    <!-- About Us Link -->
                     <li class="nav-item">
                         <a routerLink="/public/about" routerLinkActive="active" class="nav-link">
-                            About Us
+                            <i class="pi pi-info-circle"></i>
+                            <span>About Us</span>
                         </a>
                     </li>
-                    <li class="nav-item ms-3">
-                        @if (isAuthenticated) {
-                        <button type="button" class="btn btn-danger btn-sm me-2" (click)="logout()">
-                            Sign Out
-                        </button>
-                        <button type="button" class="btn btn-warning btn-sm" (click)="clearCache()">
-                            Clear Cache
-                        </button>
-                        } @else {
-                        <a routerLink="/auth/signin" class="btn btn-primary btn-sm">
-                            Sign In
+
+                    <!-- Sign In Link (Public Layout Only) -->
+                    <li class="nav-item ms-2 ps-2 border-start d-none d-lg-block">
+                        <a routerLink="/auth/signin" class="nav-link btn btn-primary btn-sm">
+                            <i class="pi pi-sign-in"></i>
+                            <span>Sign In</span>
                         </a>
-                        }
                     </li>
                 </ul>
             </div>
@@ -57,21 +80,21 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <h5>Sensibolt IT Services</h5>
-                    <p class="text-muted">Efficient ticket management and IT service solutions for your business.</p>
+                    <p class="text-white">Efficient ticket management and IT service solutions for your business.</p>
                 </div>
                 <div class="col-md-4 mb-4">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a routerLink="/" class="text-decoration-none text-muted hover-link">Home</a></li>
+                        <li><a routerLink="/" class="text-decoration-none text-white hover-link">Home</a></li>
                         <li><a routerLink="/public/services"
-                                class="text-decoration-none text-muted hover-link">Services</a></li>
-                        <li><a routerLink="/public/about" class="text-decoration-none text-muted hover-link">About
+                                class="text-decoration-none text-white hover-link">Services</a></li>
+                        <li><a routerLink="/public/about" class="text-decoration-none text-white hover-link">About
                                 Us</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 mb-4">
                     <h5>Contact</h5>
-                    <p class="text-muted">
+                    <p class="text-white">
                         Email: info@sensibolt.com<br>
                         Phone: +1 (555) 123-4567
                     </p>

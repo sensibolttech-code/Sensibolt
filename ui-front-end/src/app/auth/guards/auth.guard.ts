@@ -47,3 +47,25 @@ export const publicGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state:
     // Allow unauthenticated users to access signin page
     return true;
 };
+
+/**
+ * Public Layout Guard Function (Modern Angular 21)
+ * Prevents authenticated users from accessing public layout
+ * Redirects authenticated users to dashboard
+ *
+ * Usage in routes:
+ * { path: '', component: PublicLayoutComponent, canActivate: [publicLayoutGuard] }
+ */
+export const publicLayoutGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+    const router = inject(Router);
+
+    // If user is authenticated, redirect to dashboard
+    if (token) {
+        router.navigate(['/dashboard/home']);
+        return false;
+    }
+
+    // Allow unauthenticated users to access public pages
+    return true;
+};
