@@ -1,0 +1,330 @@
+.business-segments {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+
+        @media (max-width: 768px) {
+            font-size: 2rem;
+        }
+    }
+
+    .section-subtitle {
+        font-size: 1.1rem;
+        color: #7f8c8d;
+        margin-bottom: 3rem;
+    }
+}
+
+.segment-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+
+        .segment-image-wrapper {
+            .segment-image {
+                transform: scale(1.1);
+            }
+
+            .segment-overlay {
+                opacity: 1;
+            }
+        }
+    }
+
+    &.active {
+        box-shadow: 0 12px 32px rgba(102, 126, 234, 0.3);
+        border: 2px solid #667eea;
+    }
+
+    .segment-image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        background: #f0f0f0;
+
+        .segment-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .segment-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(102, 126, 234, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+
+            .view-details {
+                color: white;
+                font-weight: 600;
+                font-size: 0.95rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+        }
+    }
+
+    .segment-content {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        .segment-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .segment-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .segment-description {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            line-height: 1.6;
+            flex: 1;
+        }
+    }
+}
+
+// Modal Styles
+.segment-details-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1050;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .modal-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+    }
+
+    .modal-content {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        max-width: 600px;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+        width: 90%;
+        animation: slideUp 0.3s ease;
+
+        @media (max-width: 768px) {
+            max-height: 85vh;
+            width: 95%;
+        }
+
+        .btn-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 10;
+            background: #f0f0f0;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background: #e0e0e0;
+                transform: rotate(90deg);
+            }
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                width: 18px;
+                height: 2px;
+                background: #333;
+            }
+
+            &::before {
+                transform: rotate(45deg);
+            }
+
+            &::after {
+                transform: rotate(-45deg);
+            }
+        }
+
+        .modal-header {
+            padding: 2rem 2rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid #e9ecef;
+
+            .modal-icon {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+            }
+
+            h3 {
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: #2c3e50;
+                margin-bottom: 0.75rem;
+            }
+
+            .modal-description {
+                font-size: 0.95rem;
+                color: #7f8c8d;
+                line-height: 1.6;
+                margin: 0;
+            }
+        }
+
+        .modal-body {
+            padding: 2rem;
+
+            .benefits-section,
+            .use-cases-section {
+                margin-bottom: 2rem;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                .section-heading {
+                    font-size: 1rem;
+                    font-weight: 600;
+                    color: #2c3e50;
+                    margin-bottom: 1rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                }
+            }
+
+            .benefits-list,
+            .use-cases-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    display: flex;
+                    align-items: flex-start;
+                    margin-bottom: 0.75rem;
+                    font-size: 0.95rem;
+                    color: #555;
+                    line-height: 1.5;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+
+            .benefits-list {
+                li {
+                    .benefit-icon {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 24px;
+                        height: 24px;
+                        background: #d4edda;
+                        color: #28a745;
+                        border-radius: 50%;
+                        font-size: 14px;
+                        font-weight: 700;
+                        margin-right: 0.75rem;
+                        flex-shrink: 0;
+                    }
+                }
+            }
+
+            .use-cases-list {
+                li {
+                    .case-icon {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 24px;
+                        height: 24px;
+                        background: #e7f3ff;
+                        color: #0066cc;
+                        border-radius: 4px;
+                        font-size: 14px;
+                        font-weight: 700;
+                        margin-right: 0.75rem;
+                        flex-shrink: 0;
+                    }
+                }
+            }
+        }
+
+        .modal-footer {
+            padding: 1.5rem 2rem;
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+            text-align: center;
+
+            a {
+                display: inline-block;
+                min-width: 250px;
+
+                @media (max-width: 768px) {
+                    width: 100%;
+                    min-width: auto;
+                }
+            }
+        }
+    }
+}
+
+// Animation
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,78 @@
+<section class="business-segments py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Industries We Serve</h2>
+            <p class="section-subtitle">Tailored IT solutions for diverse business verticals</p>
+        </div>
+
+        <!-- Segments Grid -->
+        <div class="row g-4">
+            @for (segment of segments; track segment.id) {
+            <div class="col-md-6 col-lg-3">
+                <div class="segment-card" [class.active]="selectedSegment?.id === segment.id"
+                    (click)="selectSegment(segment)">
+                    <div class="segment-image-wrapper">
+                        <img [src]="segment.imageUrl" [alt]="segment.title" class="segment-image">
+                        <div class="segment-overlay">
+                            <span class="view-details">View Details</span>
+                        </div>
+                    </div>
+                    <div class="segment-content">
+                        <div class="segment-icon">{{ segment.icon }}</div>
+                        <h5 class="segment-title">{{ segment.title }}</h5>
+                        <p class="segment-description">{{ segment.description }}</p>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+
+        <!-- Selected Segment Details Modal -->
+        @if (selectedSegment) {
+        <div class="segment-details-modal">
+            <div class="modal-overlay" (click)="clearSelection()"></div>
+            <div class="modal-content">
+                <button type="button" class="btn-close" (click)="clearSelection()" aria-label="Close"></button>
+
+                <div class="modal-header">
+                    <div class="modal-icon">{{ selectedSegment.icon }}</div>
+                    <h3>{{ selectedSegment.title }}</h3>
+                    <p class="modal-description">{{ selectedSegment.description }}</p>
+                </div>
+
+                <div class="modal-body">
+                    <div class="benefits-section">
+                        <h6 class="section-heading">Key Benefits</h6>
+                        <ul class="benefits-list">
+                            @for (benefit of selectedSegment.keyBenefits; track $index) {
+                            <li>
+                                <span class="benefit-icon">✓</span>
+                                {{ benefit }}
+                            </li>
+                            }
+                        </ul>
+                    </div>
+
+                    <div class="use-cases-section">
+                        <h6 class="section-heading">Common Use Cases</h6>
+                        <ul class="use-cases-list">
+                            @for (useCase of selectedSegment.useCases; track $index) {
+                            <li>
+                                <span class="case-icon">→</span>
+                                {{ useCase }}
+                            </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <a routerLink="/auth/signin" class="btn btn-primary btn-lg">
+                        Get Started for {{ selectedSegment.title }}
+                    </a>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</section>
