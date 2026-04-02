@@ -1,0 +1,347 @@
+<div class="semiconductor-services">
+    <!-- Hero Section -->
+    <section class="semi-hero py-5">
+        <div class="container-fluid px-0">
+            <div class="hero-content-wrapper">
+                <div class="hero-overlay"></div>
+                <div class="container">
+                    <div class="row align-items-center min-vh-100 py-5">
+                        <div class="col-lg-6">
+                            <div class="hero-text">
+                                <div class="hero-badge">🔌 Semiconductor Excellence</div>
+                                <h1 class="hero-title">Semiconductor Board Manufacturing Solutions</h1>
+                                <p class="hero-subtitle">
+                                    Sensibolt delivers comprehensive IT and operational support for semiconductor
+                                    manufacturing
+                                    facilities worldwide. Our integrated solutions combine state-of-the-art
+                                    manufacturing equipment,
+                                    custom PCB designs, and enterprise-grade IT support to ensure zero-downtime
+                                    production,
+                                    optimal equipment performance, and maximum profitability.
+                                </p>
+                                <div class="business-details">
+                                    <h6 class="details-heading">Why Sensibolt for Semiconductor Manufacturing?</h6>
+                                    <div class="details-list">
+                                        <div class="detail-item">
+                                            <span class="detail-icon">✓</span>
+                                            <span class="detail-text"><strong>End-to-End Solutions:</strong> Complete
+                                                PCB design, manufacturing, assembly, and quality control</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-icon">✓</span>
+                                            <span class="detail-text"><strong>Industry Expertise:</strong> 15+ years in
+                                                semiconductor manufacturing and IT operations</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-icon">✓</span>
+                                            <span class="detail-text"><strong>Quality Assurance:</strong> ISO certified,
+                                                RoHS compliant, advanced inspection systems</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hero-features">
+                                    <div class="feature-item">
+                                        <span class="feature-icon">⚡</span>
+                                        <span>50K+ components/hour</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon">🎯</span>
+                                        <span>±0.1mm precision</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon">🔐</span>
+                                        <span>99.9% uptime</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon">🏆</span>
+                                        <span>ISO 9001:2015</span>
+                                    </div>
+                                </div>
+                                <div class="hero-buttons">
+                                    <a routerLink="/auth/signin" class="btn btn-primary btn-lg me-3">
+                                        <i class="pi pi-sign-in"></i> Get Started
+                                    </a>
+                                    <a href="javascript:void(0)" class="btn btn-outline-light btn-lg"
+                                        (click)="scrollToMachines()">
+                                        <i class="pi pi-arrow-down"></i> Learn More
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="hero-visual">
+                                <div class="floating-card card-1">
+                                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop"
+                                        alt="Manufacturing Equipment">
+                                </div>
+                                <div class="floating-card card-2">
+                                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=300&fit=crop"
+                                        alt="PCB Assembly">
+                                </div>
+                                <div class="floating-card card-3">
+                                    <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=400&h=300&fit=crop"
+                                        alt="Circuit Board">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manufacturing Machines Section -->
+    <section class="machines-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">State-of-the-Art Manufacturing Equipment</h2>
+                <p class="section-subtitle">Sensibolt-Integrated Automated Systems</p>
+            </div>
+
+            <div class="row g-4">
+                @for (machine of manufacturingMachines; track machine.id) {
+                <div class="col-md-6 col-lg-3">
+                    <div class="machine-card" (click)="selectMachine(machine)"
+                        [class.active]="selectedMachine?.id === machine.id">
+                        <div class="machine-image-wrapper">
+                            <img [src]="machine.imageUrl" [alt]="machine.name" class="machine-image">
+                            <div class="machine-overlay">
+                                <span class="view-specs">View Specifications</span>
+                            </div>
+                        </div>
+                        <div class="machine-content">
+                            <div class="machine-icon">{{ machine.icon }}</div>
+                            <h5 class="machine-name">{{ machine.name }}</h5>
+                            <p class="machine-desc">{{ machine.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- PCB Boards Section -->
+    <section class="boards-section py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Custom PCB & Board Designs</h2>
+                <p class="section-subtitle">Sensibolt-Designed Control and Monitoring Boards</p>
+            </div>
+
+            <!-- Banner 1: Advanced Design Capabilities -->
+            <div class="row mb-5">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="boards-banner banner-design">
+                        <div class="banner-content">
+                            <div class="banner-icon">📐</div>
+                            <h3 class="banner-title">Advanced Design Capabilities</h3>
+                            <p class="banner-subtitle">Custom PCB Design with Precision Engineering</p>
+                            <ul class="banner-features">
+                                <li><span class="check">✓</span> Multi-layer PCB routing (4/6/8 layer designs)</li>
+                                <li><span class="check">✓</span> Signal integrity analysis and impedance control</li>
+                                <li><span class="check">✓</span> Thermal management and heat dissipation design</li>
+                                <li><span class="check">✓</span> DFM review and manufacturing optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Banner 2: Manufacturing Excellence -->
+                <div class="col-lg-6">
+                    <div class="boards-banner banner-manufacturing">
+                        <div class="banner-content">
+                            <div class="banner-icon">🏭</div>
+                            <h3 class="banner-title">Manufacturing Excellence</h3>
+                            <p class="banner-subtitle">Quality Assurance and Production Standards</p>
+                            <ul class="banner-features">
+                                <li><span class="check">✓</span> ISO 9001:2015 certified manufacturing</li>
+                                <li><span class="check">✓</span> RoHS compliant and environmentally responsible</li>
+                                <li><span class="check">✓</span> Automated optical inspection (AOI) verification</li>
+                                <li><span class="check">✓</span> First-pass yield optimization and testing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PCB Boards Grid -->
+            <div class="row g-4">
+                @for (board of pcbBoards; track board.id) {
+                <div class="col-md-6 col-lg-3">
+                    <div class="board-card" (click)="selectBoard(board)"
+                        [class.active]="selectedBoard?.id === board.id">
+                        <div class="board-image-wrapper">
+                            <img [src]="board.imageUrl" [alt]="board.name" class="board-image">
+                            <div class="board-badge">{{ board.type }}</div>
+                            <div class="board-overlay">
+                                <span class="view-specs">View Details</span>
+                            </div>
+                        </div>
+                        <div class="board-content">
+                            <h5 class="board-name">{{ board.name }}</h5>
+                            <p class="board-desc">{{ board.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Semiconductor Services</h2>
+                <p class="section-subtitle">Comprehensive solutions for your manufacturing operations</p>
+            </div>
+
+            <div class="row g-4">
+                @for (service of semiconductorServices; track service.id) {
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="service-icon-wrapper">
+                            <span class="service-icon">{{ service.icon }}</span>
+                        </div>
+                        <h5 class="service-name">{{ service.name }}</h5>
+                        <p class="service-desc">{{ service.description }}</p>
+                        <ul class="service-features">
+                            @for (feature of service.features; track $index) {
+                            <li>
+                                <span class="check-icon">✓</span>
+                                {{ feature }}
+                            </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h3 class="stat-number">50K+</h3>
+                        <p class="stat-label">Components/Hour</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h3 class="stat-number">±0.1mm</h3>
+                        <p class="stat-label">Placement Accuracy</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h3 class="stat-number">99.9%</h3>
+                        <p class="stat-label">System Uptime</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h3 class="stat-number">4</h3>
+                        <p class="stat-label">Custom Board Types</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h3 class="cta-title">Ready to Transform Your Manufacturing?</h3>
+                    <p class="cta-subtitle">
+                        Partner with Sensibolt for state-of-the-art semiconductor manufacturing solutions with complete
+                        IT support.
+                    </p>
+                </div>
+                <div class="col-lg-4 text-lg-end text-center mt-3 mt-lg-0">
+                    <a routerLink="/auth/signin" class="btn btn-primary btn-lg">
+                        <i class="pi pi-sign-in"></i> Get Started Today
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Machine Details Modal -->
+    @if (selectedMachine) {
+    <div class="details-modal" (click)="clearSelection()">
+        <div class="modal-overlay"></div>
+        <div class="modal-content" (click)="$event.stopPropagation()">
+            <button type="button" class="btn-close" (click)="clearSelection()"></button>
+            <div class="modal-header">
+                <div class="modal-icon">{{ selectedMachine.icon }}</div>
+                <h3>{{ selectedMachine.name }}</h3>
+                <p>{{ selectedMachine.description }}</p>
+            </div>
+            <div class="modal-body">
+                <div class="specs-section">
+                    <h6>Specifications</h6>
+                    <ul class="specs-list">
+                        @for (spec of selectedMachine.specifications; track $index) {
+                        <li>{{ spec }}</li>
+                        }
+                    </ul>
+                </div>
+                <div class="capabilities-section">
+                    <h6>Capabilities</h6>
+                    <ul class="capabilities-list">
+                        @for (capability of selectedMachine.capabilities; track $index) {
+                        <li>{{ capability }}</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a routerLink="/auth/signin" class="btn btn-primary">Request Demo</a>
+            </div>
+        </div>
+    </div>
+    }
+
+    <!-- Board Details Modal -->
+    @if (selectedBoard) {
+    <div class="details-modal" (click)="clearSelection()">
+        <div class="modal-overlay"></div>
+        <div class="modal-content" (click)="$event.stopPropagation()">
+            <button type="button" class="btn-close" (click)="clearSelection()"></button>
+            <div class="modal-header">
+                <h3>{{ selectedBoard.name }}</h3>
+                <p class="board-type-badge">{{ selectedBoard.type }}</p>
+                <p>{{ selectedBoard.description }}</p>
+            </div>
+            <div class="modal-body">
+                <div class="specs-section">
+                    <h6>Features</h6>
+                    <ul class="specs-list">
+                        @for (feature of selectedBoard.features; track $index) {
+                        <li>{{ feature }}</li>
+                        }
+                    </ul>
+                </div>
+                <div class="capabilities-section">
+                    <h6>Applications</h6>
+                    <ul class="capabilities-list">
+                        @for (app of selectedBoard.applications; track $index) {
+                        <li>{{ app }}</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a routerLink="/auth/signin" class="btn btn-primary">Order Custom Board</a>
+            </div>
+        </div>
+    </div>
+    }
+</div>
