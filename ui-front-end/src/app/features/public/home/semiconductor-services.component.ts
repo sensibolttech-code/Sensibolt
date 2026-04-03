@@ -183,7 +183,7 @@ export class SemiconductorServicesComponent {
             name: 'Sensor Integration Board (SIB-Max)',
             description: 'Multi-sensor integration platform for comprehensive facility and equipment monitoring.',
             type: '4-Layer PCB',
-            imageUrl: 'https://images.unsplash.com/photo-1581092160562-40fed08ce0f4?w=600&h=400&fit=crop',
+            imageUrl: 'https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=600&h=400',
             features: [
                 'Support for 16+ sensor types',
                 'Analog/Digital/I2C interfaces',
