@@ -70,7 +70,8 @@ export class SignInComponent {
             },
             error: (error) => {
                 this.loading = false;
-                this.errorMessage = error.error?.message || 'Sign in failed. Please check your credentials.';
+                const errorMsg = error?.message || (typeof error === 'string' ? error : 'Sign in failed. Please check your credentials.');
+                this.errorMessage = errorMsg;
                 console.error('Sign in error:', error);
             }
         });

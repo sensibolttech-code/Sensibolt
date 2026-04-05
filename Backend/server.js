@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
 });
 
 // Sign-in endpoint
-app.post("/auth/signin", (req, res) => {
+app.post("/api/auth/signin", (req, res) => {
   const { email, password } = req.body;
 
   // Validate input
@@ -80,18 +80,20 @@ app.post("/auth/signin", (req, res) => {
   res.json({
     success: true,
     message: "Sign in successful",
-    token,
-    user: {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      role: user.role
+    data: {
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role
+      }
     }
   });
 });
 
 // Register endpoint
-app.post("/auth/register", (req, res) => {
+app.post("/api/auth/register", (req, res) => {
   const { name, email, password, confirmPassword } = req.body;
 
   // Validate input
@@ -139,12 +141,14 @@ app.post("/auth/register", (req, res) => {
   res.status(201).json({
     success: true,
     message: "Registration successful",
-    token,
-    user: {
-      id: newUser.id,
-      name: newUser.name,
-      email: newUser.email,
-      role: newUser.role
+    data: {
+      token,
+      user: {
+        id: newUser.id,
+        name: newUser.name,
+        email: newUser.email,
+        role: newUser.role
+      }
     }
   });
 });
@@ -177,6 +181,99 @@ app.get("/api/user/profile", verifyToken, (req, res) => {
   res.json({
     success: true,
     user: req.user
+  });
+});
+
+// Validate token endpoint
+app.post("/api/auth/validate", (req, res) => {
+  const token = req.body.token || req.headers.authorization?.split(" ")[1];
+
+  if (!token) {
+    return res.status(401).json({
+      success: false,
+      message: "No token provided"
+    });
+  }
+
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    res.json({
+      success: true,
+      message: "Token is valid",
+      data: { user: decoded }
+    });
+  } catch (err) {
+    res.status(401).json({
+      success: false,
+      message: "Invalid or expired token"
+    });
+  }
+});
+
+// Refresh token endpoint
+app.post("/api/auth/refresh", (req, res) => {
+  const token = req.body.token;
+
+  if (!token) {
+    return res.status(401).json({
+      success: false,
+      message: "No token provided"
+    });
+  }
+
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    
+    // Generate new token
+    const newToken = jwt.sign(
+      { id: decoded.id, email: decoded.email, name: decoded.name, role: decoded.role },
+      JWT_SECRET,
+      { expiresIn: "24h" }
+    );
+
+    res.json({
+      success: true,
+      message: "Token refreshed",
+      data: { token: newToken }
+    });
+  } catch (err) {
+    res.status(401).json({
+      success: false,
+      message: "Invalid or expired token"
+    });
+  }
+});
+
+// Get auth profile endpoint
+app.get("/api/auth/profile", verifyToken, (req, res) => {
+  const user = users.find(u => u.id === req.user.id);
+  
+  if (!user) {
+    return res.status(404).json({
+      success: false,
+      message: "User not found"
+    });
+  }
+
+  res.json({
+    success: true,
+    message: "Profile retrieved",
+    data: {
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role
+      }
+    }
+  });
+});
+
+// Logout endpoint
+app.post("/api/auth/logout", verifyToken, (req, res) => {
+  res.json({
+    success: true,
+    message: "Logged out successfully"
   });
 });
 
