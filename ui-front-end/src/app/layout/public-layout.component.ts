@@ -60,7 +60,7 @@ export class PublicLayoutComponent {
             label: 'Knowledge & Docs',
             icon: 'pi-book',
             subItems: [
-                { label: 'Knowledge Base', icon: 'pi-book', description: 'Centralised IT knowledge repository' },
+                { label: 'Knowledge Base', icon: 'pi-book', description: 'Centralized IT knowledge repository' },
                 { label: 'Documentation', icon: 'pi-file', description: 'Technical and process documentation' },
                 { label: 'FAQs & Guides', icon: 'pi-question-circle', description: 'Step-by-step guides for common tasks' },
                 { label: 'Training Portal', icon: 'pi-graduation-cap', description: 'Onboarding and skill-building resources' },
