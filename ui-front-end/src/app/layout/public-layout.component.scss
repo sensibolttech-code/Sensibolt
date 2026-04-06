@@ -64,56 +64,188 @@
                 }
 
                 &.dropdown {
-                    position: relative;
+                    position: static;
 
                     .dropdown-toggle::after {
                         margin-left: 0.5rem;
                     }
 
-                    .dropdown-menu {
+                    .mega-menu {
                         display: none;
-                        position: absolute;
-                        top: 100%;
+                        position: fixed;
+                        top: 60px;
                         left: 0;
+                        right: 0;
                         z-index: 1000;
-                        min-width: 220px;
-                        border-radius: 0.5rem;
-                        border: 1px solid #dee2e6;
-                        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+                        border-radius: 0;
+                        border: none;
+                        border-top: 2px solid #007bff;
+                        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
                         background-color: white;
-                        padding: 0.5rem 0;
-                        margin-top: 0.5rem;
+                        padding: 0;
 
                         &.show {
                             display: block;
                         }
 
-                        .dropdown-item {
-                            color: #333;
-                            padding: 0.5rem 1rem;
-                            transition: all 0.2s ease;
+                        .mega-menu-inner {
                             display: flex;
-                            align-items: center;
-                            gap: 0.5rem;
-                            border: none;
-                            background: none;
-                            cursor: pointer;
-                            width: 100%;
-                            text-align: left;
+                            max-width: 1100px;
+                            margin: 0 auto;
+                            min-height: 320px;
+                        }
 
-                            .pi {
+                        .mega-menu-label {
+                            font-size: 0.7rem;
+                            font-weight: 700;
+                            text-transform: uppercase;
+                            letter-spacing: 0.08em;
+                            color: #999;
+                            margin: 0 0 0.75rem 0;
+                            padding: 0;
+                        }
+
+                        // Left panel: main categories
+                        .mega-menu-categories {
+                            width: 220px;
+                            flex-shrink: 0;
+                            background: #f8f9fa;
+                            padding: 1.25rem 1rem;
+                            border-right: 1px solid #e9ecef;
+                            display: flex;
+                            flex-direction: column;
+
+                            .category-item {
+                                display: flex;
+                                align-items: center;
+                                gap: 0.6rem;
+                                padding: 0.6rem 0.75rem;
+                                color: #444;
+                                text-decoration: none;
+                                border-radius: 0.4rem;
+                                font-weight: 500;
                                 font-size: 0.9rem;
-                                width: 1rem;
+                                transition: all 0.15s ease;
+                                margin-bottom: 0.15rem;
+                                cursor: pointer;
+
+                                > .pi:first-child {
+                                    font-size: 1rem;
+                                    color: #666;
+                                    width: 1.1rem;
+                                    flex-shrink: 0;
+                                }
+
+                                span {
+                                    flex: 1;
+                                }
+
+                                .arrow-icon {
+                                    font-size: 0.65rem;
+                                    color: #ccc;
+                                    margin-left: auto;
+                                    transition: color 0.15s;
+                                }
+
+                                &:hover,
+                                &.active {
+                                    background-color: #e7f1ff;
+                                    color: #007bff;
+
+                                    > .pi:first-child {
+                                        color: #007bff;
+                                    }
+
+                                    .arrow-icon {
+                                        color: #007bff;
+                                    }
+                                }
+                            }
+                        }
+
+                        // Vertical divider
+                        .mega-menu-divider {
+                            width: 1px;
+                            background: #e9ecef;
+                            flex-shrink: 0;
+                        }
+
+                        // Right panel: sub-items
+                        .mega-menu-subitems {
+                            flex: 1;
+                            padding: 1.25rem 1.5rem;
+                            overflow: hidden;
+
+                            .subitems-grid {
+                                display: grid;
+                                grid-template-columns: repeat(2, 1fr);
+                                gap: 0.5rem;
                             }
 
-                            &:hover {
-                                background-color: #f0f0f0;
-                                color: #007bff;
-                            }
+                            .subitem-card {
+                                display: flex;
+                                align-items: flex-start;
+                                gap: 0.75rem;
+                                padding: 0.65rem 0.75rem;
+                                text-decoration: none;
+                                border-radius: 0.4rem;
+                                border: 1px solid transparent;
+                                transition: all 0.15s ease;
+                                color: #333;
 
-                            &.active {
-                                background-color: #e9ecef;
-                                color: #007bff;
+                                .subitem-icon-wrapper {
+                                    width: 2.25rem;
+                                    height: 2.25rem;
+                                    border-radius: 0.4rem;
+                                    background: #e7f1ff;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    flex-shrink: 0;
+                                    transition: background 0.15s ease;
+
+                                    .pi {
+                                        font-size: 1rem;
+                                        color: #007bff;
+                                    }
+                                }
+
+                                .subitem-text {
+                                    display: flex;
+                                    flex-direction: column;
+
+                                    .subitem-label {
+                                        font-weight: 600;
+                                        font-size: 0.875rem;
+                                        color: #222;
+                                        line-height: 1.3;
+                                    }
+
+                                    .subitem-desc {
+                                        font-size: 0.75rem;
+                                        color: #888;
+                                        margin-top: 0.15rem;
+                                        line-height: 1.4;
+                                    }
+                                }
+
+                                &:hover {
+                                    background: #f0f8ff;
+                                    border-color: #cce5ff;
+                                    color: #007bff;
+
+                                    .subitem-icon-wrapper {
+                                        background: #007bff;
+
+                                        .pi {
+                                            color: white;
+                                        }
+                                    }
+
+                                    .subitem-label {
+                                        color: #007bff;
+                                    }
+                                }
                             }
                         }
                     }

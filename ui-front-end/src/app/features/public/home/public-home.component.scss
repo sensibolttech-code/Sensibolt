@@ -1,70 +1,115 @@
 .public-home {
     .hero-section {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
         position: relative;
-        overflow: hidden;
 
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><path d="M0,300 Q300,200 600,300 T1200,300 L1200,600 L0,600 Z" fill="rgba(255,255,255,0.1)"/></svg>');
-            background-size: cover;
-            opacity: 0.5;
+        .carousel,
+        .carousel-inner,
+        .carousel-item {
+            height: 100vh;
+            min-height: 560px;
+        }
+
+        .hero-slide {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+
+            .container {
+                height: 100%;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><path d="M0,300 Q300,200 600,300 T1200,300 L1200,600 L0,600 Z" fill="rgba(255,255,255,0.06)"/></svg>');
+                background-size: cover;
+            }
+
+            &.slide-1 {
+                background: linear-gradient(135deg, #1a237e 0%, #3949ab 50%, #1565c0 100%);
+            }
+
+            &.slide-2 {
+                background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #00695c 100%);
+            }
+
+            &.slide-3 {
+                background: linear-gradient(135deg, #4a148c 0%, #6a1b9a 50%, #7b1fa2 100%);
+            }
+
+            &.slide-4 {
+                background: linear-gradient(135deg, #b71c1c 0%, #c62828 50%, #ad1457 100%);
+            }
         }
 
         .hero-content {
             z-index: 2;
             position: relative;
+            padding: 2rem 0;
+
+            .hero-badge {
+                display: inline-block;
+                background: rgba(255, 255, 255, 0.2);
+                color: white;
+                padding: 0.35rem 1rem;
+                border-radius: 2rem;
+                font-size: 0.85rem;
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                margin-bottom: 1.25rem;
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                backdrop-filter: blur(4px);
+            }
 
             .hero-title {
-                font-size: 3.5rem;
+                font-size: 3rem;
                 font-weight: 700;
                 line-height: 1.2;
-                margin-bottom: 1.5rem;
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+                margin-bottom: 1.25rem;
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+
+                .highlight {
+                    color: #ffe082;
+                }
 
                 @media (max-width: 768px) {
-                    font-size: 2.5rem;
+                    font-size: 2rem;
                 }
             }
 
             .hero-subtitle {
-                font-size: 1.25rem;
+                font-size: 1.1rem;
                 margin-bottom: 2rem;
-                opacity: 0.95;
-                line-height: 1.6;
+                opacity: 0.92;
+                line-height: 1.7;
+                max-width: 560px;
             }
 
             .hero-buttons {
                 .btn {
-                    padding: 0.75rem 2rem;
+                    padding: 0.75rem 1.75rem;
                     font-weight: 600;
                     border-radius: 0.5rem;
                     transition: all 0.3s ease;
 
                     &.btn-primary {
                         background-color: white;
-                        color: #667eea;
+                        color: #1a237e;
                         border-color: white;
 
                         &:hover {
                             background-color: #f0f0f0;
                             transform: translateY(-2px);
-                            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
                         }
                     }
 
-                    &.btn-outline-primary {
-                        color: white;
-                        border-color: white;
-
+                    &.btn-outline-light {
                         &:hover {
-                            background-color: rgba(255, 255, 255, 0.1);
                             transform: translateY(-2px);
                             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
                         }
@@ -73,55 +118,41 @@
             }
         }
 
-        .hero-illustration {
+        .slide-icon-wrapper {
             z-index: 2;
             position: relative;
-            text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            animation: float 4s ease-in-out infinite;
 
-            .hero-image {
-                max-width: 100%;
-                height: auto;
-                border-radius: 1rem;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-                animation: float 3s ease-in-out infinite;
-
-                @keyframes float {
-
-                    0%,
-                    100% {
-                        transform: translateY(0px);
-                    }
-
-                    50% {
-                        transform: translateY(-20px);
-                    }
-                }
+            .slide-icon {
+                font-size: 7rem;
+                color: rgba(255, 255, 255, 0.9);
             }
+        }
 
-            .illustration-icon {
-                font-size: 8rem;
-                margin-bottom: 1rem;
-                animation: float 3s ease-in-out infinite;
-            }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-18px); }
+        }
 
-            p {
-                font-size: 1.25rem;
-                opacity: 0.9;
-            }
+        .carousel-indicators button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.6);
+            border: 2px solid white;
+            transition: background-color 0.3s;
 
-            @keyframes float {
-
-                0%,
-                100% {
-                    transform: translateY(0px);
-                }
-
-                50% {
-                    transform: translateY(-20px);
-                }
+            &.active {
+                background-color: white;
             }
         }
     }
