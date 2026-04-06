@@ -10,7 +10,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center">
+                <!-- Centered nav links -->
+                <ul class="navbar-nav mx-auto align-items-center">
                     <!-- Home Link -->
                     <li class="nav-item">
                         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
@@ -20,33 +21,41 @@
                         </a>
                     </li>
 
-                    <!-- Services Dropdown -->
+                    <!-- Services Mega Menu Dropdown -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="servicesDropdown"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="pi pi-list"></i>
                             <span>Services</span>
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-                            <li><a class="dropdown-item" href="javascript:void(0)" (click)="navigateToServices()">
-                                    <i class="pi pi-exclamation-circle"></i> Incident Management
-                                </a></li>
-                            <li><a class="dropdown-item" href="javascript:void(0)" (click)="navigateToServices()">
-                                    <i class="pi pi-file-edit"></i> Service Request Management
-                                </a></li>
-                            <li><a class="dropdown-item" href="javascript:void(0)" (click)="navigateToServices()">
-                                    <i class="pi pi-refresh"></i> Change Management
-                                </a></li>
-                            <li><a class="dropdown-item" href="javascript:void(0)" (click)="navigateToServices()">
-                                    <i class="pi pi-search"></i> Problem Management
-                                </a></li>
-                            <li><a class="dropdown-item" href="javascript:void(0)" (click)="navigateToServices()">
-                                    <i class="pi pi-desktop"></i> Asset Management
-                                </a></li>
-                            <li><a class="dropdown-item" href="javascript:void(0)" (click)="navigateToServices()">
-                                    <i class="pi pi-book"></i> Knowledge Management
-                                </a></li>
-                        </ul>
+                        <div class="dropdown-menu mega-menu" aria-labelledby="servicesDropdown">
+                            <div class="mega-menu-inner">
+                                <a class="mega-menu-item" href="javascript:void(0)" (click)="navigateToServices()">
+                                    <i class="pi pi-exclamation-circle"></i>
+                                    <span>Incident Management</span>
+                                </a>
+                                <a class="mega-menu-item" href="javascript:void(0)" (click)="navigateToServices()">
+                                    <i class="pi pi-file-edit"></i>
+                                    <span>Service Request Management</span>
+                                </a>
+                                <a class="mega-menu-item" href="javascript:void(0)" (click)="navigateToServices()">
+                                    <i class="pi pi-refresh"></i>
+                                    <span>Change Management</span>
+                                </a>
+                                <a class="mega-menu-item" href="javascript:void(0)" (click)="navigateToServices()">
+                                    <i class="pi pi-search"></i>
+                                    <span>Problem Management</span>
+                                </a>
+                                <a class="mega-menu-item" href="javascript:void(0)" (click)="navigateToServices()">
+                                    <i class="pi pi-desktop"></i>
+                                    <span>Asset Management</span>
+                                </a>
+                                <a class="mega-menu-item" href="javascript:void(0)" (click)="navigateToServices()">
+                                    <i class="pi pi-book"></i>
+                                    <span>Knowledge Management</span>
+                                </a>
+                            </div>
+                        </div>
                     </li>
 
                     <!-- About Us Link -->
@@ -56,8 +65,10 @@
                             <span>About Us</span>
                         </a>
                     </li>
+                </ul>
 
-                    <!-- Sign In Link (Public Layout Only) -->
+                <!-- Sign In button on the right -->
+                <ul class="navbar-nav align-items-center">
                     <li class="nav-item ms-2 ps-2 border-start d-none d-lg-block">
                         <a routerLink="/auth/signin" class="nav-link btn btn-primary btn-sm">
                             <i class="pi pi-sign-in"></i>

@@ -64,56 +64,61 @@
                 }
 
                 &.dropdown {
-                    position: relative;
+                    position: static;
 
                     .dropdown-toggle::after {
                         margin-left: 0.5rem;
                     }
 
-                    .dropdown-menu {
+                    .mega-menu {
                         display: none;
-                        position: absolute;
-                        top: 100%;
+                        position: fixed;
+                        top: 60px;
                         left: 0;
+                        right: 0;
                         z-index: 1000;
-                        min-width: 220px;
-                        border-radius: 0.5rem;
-                        border: 1px solid #dee2e6;
-                        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+                        border-radius: 0;
+                        border: none;
+                        border-top: 2px solid #007bff;
+                        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
                         background-color: white;
-                        padding: 0.5rem 0;
-                        margin-top: 0.5rem;
+                        padding: 1.25rem 2rem;
 
                         &.show {
                             display: block;
                         }
 
-                        .dropdown-item {
-                            color: #333;
-                            padding: 0.5rem 1rem;
-                            transition: all 0.2s ease;
+                        .mega-menu-inner {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 0.5rem;
+                            max-width: 1200px;
+                            margin: 0 auto;
+                        }
+
+                        .mega-menu-item {
                             display: flex;
                             align-items: center;
-                            gap: 0.5rem;
-                            border: none;
-                            background: none;
-                            cursor: pointer;
-                            width: 100%;
-                            text-align: left;
+                            gap: 0.6rem;
+                            padding: 0.6rem 1rem;
+                            color: #333;
+                            text-decoration: none;
+                            border-radius: 0.4rem;
+                            transition: all 0.2s ease;
+                            flex: 1 1 calc(33.333% - 0.5rem);
+                            min-width: 180px;
+                            font-weight: 500;
+                            border: 1px solid transparent;
 
                             .pi {
-                                font-size: 0.9rem;
-                                width: 1rem;
+                                font-size: 1rem;
+                                color: #007bff;
                             }
 
                             &:hover {
-                                background-color: #f0f0f0;
+                                background-color: #f0f8ff;
                                 color: #007bff;
-                            }
-
-                            &.active {
-                                background-color: #e9ecef;
-                                color: #007bff;
+                                border-color: #cce5ff;
                             }
                         }
                     }
