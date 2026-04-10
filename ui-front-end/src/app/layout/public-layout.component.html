@@ -33,12 +33,9 @@
                                 <!-- Left: Main Categories -->
                                 <div class="mega-menu-categories">
                                     <p class="mega-menu-label">Browse Services</p>
-                                    <a *ngFor="let cat of serviceCategories; let i = index"
-                                        class="category-item"
-                                        [class.active]="activeCategoryIndex === i"
-                                        href="javascript:void(0)"
-                                        (mouseenter)="activeCategoryIndex = i"
-                                        (click)="navigateToServices()">
+                                    <a *ngFor="let cat of serviceCategories; let i = index" class="category-item"
+                                        [class.active]="activeCategoryIndex === i" href="javascript:void(0)"
+                                        (mouseenter)="activeCategoryIndex = i" (click)="navigateToCategory(cat.slug)">
                                         <i class="pi {{ cat.icon }}"></i>
                                         <span>{{ cat.label }}</span>
                                         <i class="pi pi-chevron-right arrow-icon"></i>
@@ -52,10 +49,8 @@
                                 <div class="mega-menu-subitems">
                                     <p class="mega-menu-label">{{ activeCategory.label }}</p>
                                     <div class="subitems-grid">
-                                        <a *ngFor="let item of activeCategory.subItems"
-                                            class="subitem-card"
-                                            href="javascript:void(0)"
-                                            (click)="navigateToServices()">
+                                        <a *ngFor="let item of activeCategory.subItems" class="subitem-card"
+                                            href="javascript:void(0)" (click)="navigateToCategory(activeCategory.slug)">
                                             <span class="subitem-icon-wrapper">
                                                 <i class="pi {{ item.icon }}"></i>
                                             </span>

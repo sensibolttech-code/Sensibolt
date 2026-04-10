@@ -1,47 +1,65 @@
 <div class="public-services">
-    <!-- Hero Section -->
-    <section class="services-hero py-5"
-        style="background: linear-gradient(rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)), 
-                     url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=400&fit=crop') center/cover;">
-        <div class="container">
-            <div class="text-center">
+
+    <!-- ── Hero ─────────────────────────────────────────────────── -->
+    <section class="services-hero">
+        <div class="container py-5">
+            <div class="text-center text-white">
+                <div class="hero-icon-wrap mx-auto mb-3">
+                    <i class="pi pi-th-large"></i>
+                </div>
                 <h1 class="hero-title">Our Services</h1>
                 <p class="hero-subtitle">
-                    Comprehensive IT service management solutions to optimize your operations
+                    Six practice areas, one platform — comprehensive IT and manufacturing solutions for modern
+                    enterprises
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Services Grid -->
+    <!-- ── Services Grid ─────────────────────────────────────────── -->
     <section class="services-grid py-5">
         <div class="container">
             <div class="row g-4">
                 @for (service of services; track service.id) {
                 <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <div class="service-image-wrapper">
-                            <img [src]="service.imageUrl" [alt]="service.title" class="service-image">
-                        </div>
-                        <div class="service-icon">{{ service.icon }}</div>
-                        <h4>{{ service.title }}</h4>
-                        <p class="service-description">{{ service.description }}</p>
+                    <div class="service-card h-100" [style.--sc-accent]="service.accentColor"
+                        [style.--sc-icon-bg]="service.iconBg">
 
-                        <div class="service-features">
-                            <h6>Key Features:</h6>
+                        <!-- Card image with gradient overlay -->
+                        <div class="card-image-wrap">
+                            <img [src]="service.imageUrl" [alt]="service.title" class="card-image">
+                            <div class="card-image-overlay" [style.background]="service.gradient + '99'"></div>
+                            <div class="card-header-content">
+                                <div class="card-icon-badge">
+                                    <i class="pi {{ service.icon }}"></i>
+                                </div>
+                                <h4 class="card-title">{{ service.title }}</h4>
+                                <p class="card-tagline">{{ service.tagline }}</p>
+                            </div>
+                        </div>
+
+                        <!-- Features list -->
+                        <div class="card-body-area">
+                            <h6 class="features-label">
+                                <i class="pi pi-check-circle me-1"></i> What's Included
+                            </h6>
                             <ul class="feature-list">
                                 @for (feature of service.features; track $index) {
                                 <li>
-                                    <span class="feature-check">✓</span>
+                                    <i class="pi pi-angle-right feature-arrow"></i>
                                     {{ feature }}
                                 </li>
                                 }
                             </ul>
                         </div>
 
-                        <a routerLink="/auth/signin" class="btn btn-primary btn-sm w-100">
-                            Get Started
-                        </a>
+                        <!-- CTA row -->
+                        <div class="card-footer-area">
+                            <a [routerLink]="['/public/services', service.slug]" class="btn-explore">
+                                Explore {{ service.title }}
+                                <i class="pi pi-arrow-right ms-2"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 }
@@ -49,40 +67,44 @@
         </div>
     </section>
 
-    <!-- Benefits Section -->
+    <!-- ── Why Choose ────────────────────────────────────────────── -->
     <section class="benefits-section py-5 bg-light">
         <div class="container">
-            <h2 class="section-title text-center mb-5">Why Choose Our Services?</h2>
-
+            <h2 class="section-title text-center mb-5">Why Choose Sensibolt?</h2>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3">
                     <div class="benefit-item text-center">
-                        <div class="benefit-icon">⚡</div>
+                        <div class="benefit-icon-wrap">
+                            <i class="pi pi-bolt"></i>
+                        </div>
                         <h5>Fast Implementation</h5>
                         <p>Get up and running in days, not months</p>
                     </div>
                 </div>
-
                 <div class="col-md-6 col-lg-3">
                     <div class="benefit-item text-center">
-                        <div class="benefit-icon">🎯</div>
+                        <div class="benefit-icon-wrap">
+                            <i class="pi pi-verified"></i>
+                        </div>
                         <h5>Best Practices</h5>
                         <p>Built on ITIL and industry best practices</p>
                     </div>
                 </div>
-
                 <div class="col-md-6 col-lg-3">
                     <div class="benefit-item text-center">
-                        <div class="benefit-icon">📊</div>
+                        <div class="benefit-icon-wrap">
+                            <i class="pi pi-chart-bar"></i>
+                        </div>
                         <h5>Analytics Ready</h5>
                         <p>Data-driven insights for better decisions</p>
                     </div>
                 </div>
-
                 <div class="col-md-6 col-lg-3">
                     <div class="benefit-item text-center">
-                        <div class="benefit-icon">🤝</div>
-                        <h5>24/7 Support</h5>
+                        <div class="benefit-icon-wrap">
+                            <i class="pi pi-headphones"></i>
+                        </div>
+                        <h5>24×7 Support</h5>
                         <p>Expert support whenever you need it</p>
                     </div>
                 </div>
@@ -90,75 +112,17 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing-section py-5">
-        <div class="container">
-            <h2 class="section-title text-center mb-5">Simple Pricing</h2>
-
-            <div class="row g-4 justify-content-center">
-                <div class="col-md-6 col-lg-4">
-                    <div class="pricing-card">
-                        <h5>Starter</h5>
-                        <div class="price">$49<span>/month</span></div>
-                        <p class="price-description">Perfect for small teams</p>
-                        <ul class="pricing-features">
-                            <li>✓ Up to 5 users</li>
-                            <li>✓ Basic reporting</li>
-                            <li>✓ Email support</li>
-                            <li>✓ 100 tickets/month</li>
-                        </ul>
-                        <a routerLink="/auth/signin" class="btn btn-outline-primary w-100">Get Started</a>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="pricing-card featured">
-                        <div class="badge">Most Popular</div>
-                        <h5>Professional</h5>
-                        <div class="price">$149<span>/month</span></div>
-                        <p class="price-description">For growing organizations</p>
-                        <ul class="pricing-features">
-                            <li>✓ Up to 50 users</li>
-                            <li>✓ Advanced analytics</li>
-                            <li>✓ Priority support</li>
-                            <li>✓ Unlimited tickets</li>
-                        </ul>
-                        <a routerLink="/auth/signin" class="btn btn-primary w-100">Get Started</a>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="pricing-card">
-                        <h5>Enterprise</h5>
-                        <div class="price">Custom</div>
-                        <p class="price-description">For large deployments</p>
-                        <ul class="pricing-features">
-                            <li>✓ Unlimited users</li>
-                            <li>✓ Custom integrations</li>
-                            <li>✓ Dedicated support</li>
-                            <li>✓ Custom features</li>
-                        </ul>
-                        <a href="mailto:info@sensibolt.com" class="btn btn-outline-primary w-100">Contact Sales</a>
-                    </div>
-                </div>
+    <!-- ── CTA ───────────────────────────────────────────────────── -->
+    <section class="cta-section py-5">
+        <div class="container text-center text-white">
+            <h3 class="cta-title">Ready to transform your IT operations?</h3>
+            <p class="mt-2 opacity-75">Join businesses that trust Sensibolt for end-to-end IT and manufacturing
+                excellence.</p>
+            <div class="mt-4 d-flex justify-content-center gap-3 flex-wrap">
+                <a routerLink="/auth/signin" class="btn btn-light btn-lg px-4">Sign In</a>
+                <a routerLink="/public/about" class="btn btn-outline-light btn-lg px-4">Learn More</a>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section py-5 bg-primary text-white">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <h3 class="mb-3">Start managing your IT services today</h3>
-                    <p class="mb-0">Join thousands of organizations using Sensibolt for efficient IT operations</p>
-                </div>
-                <div class="col-lg-4 text-lg-end text-center mt-3 mt-lg-0">
-                    <a routerLink="/auth/signin" class="btn btn-light btn-lg">
-                        Start Free Trial
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 </div>

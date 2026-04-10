@@ -4,7 +4,7 @@
     .section-title {
         font-size: 2.5rem;
         font-weight: 700;
-        color: #2c3e50;
+        color: #0f172a;
         margin-bottom: 1rem;
 
         @media (max-width: 768px) {
@@ -13,8 +13,8 @@
     }
 
     .section-subtitle {
-        font-size: 1.1rem;
-        color: #7f8c8d;
+        font-size: 1.05rem;
+        color: #64748b;
         margin-bottom: 3rem;
     }
 }
@@ -64,23 +64,51 @@
             transition: transform 0.3s ease;
         }
 
+        .segment-gradient-overlay {
+            position: absolute;
+            inset: 0;
+            transition: opacity 0.3s ease;
+            opacity: 0.55;
+        }
+
+        .segment-icon-badge {
+            position: absolute;
+            top: 0.875rem;
+            left: 0.875rem;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1.5px solid rgba(255, 255, 255, 0.35);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            z-index: 2;
+
+            i {
+                font-size: 1.1rem;
+            }
+        }
+
         .segment-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(102, 126, 234, 0.8);
+            background: rgba(15, 23, 42, 0.55);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             transition: opacity 0.3s ease;
+            z-index: 3;
 
             .view-details {
                 color: white;
                 font-weight: 600;
-                font-size: 0.95rem;
+                font-size: 0.875rem;
                 text-transform: uppercase;
                 letter-spacing: 0.5px;
             }
@@ -94,8 +122,7 @@
         flex-direction: column;
 
         .segment-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            display: none; // replaced by segment-icon-badge
         }
 
         .segment-title {
@@ -107,10 +134,25 @@
         }
 
         .segment-description {
-            font-size: 0.95rem;
-            color: #7f8c8d;
+            font-size: 0.875rem;
+            color: #64748b;
             line-height: 1.6;
             flex: 1;
+            margin-bottom: 1rem;
+        }
+
+        .segment-link {
+            display: inline-flex;
+            align-items: center;
+            color: #1e3a8a;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: auto;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 }
@@ -192,26 +234,37 @@
             }
         }
 
-        .modal-header {
+        .modal-header-area {
             padding: 2rem 2rem 1.5rem;
             text-align: center;
-            border-bottom: 1px solid #e9ecef;
+            border-radius: 16px 16px 0 0;
+            color: #fff;
 
-            .modal-icon {
-                font-size: 3rem;
-                margin-bottom: 1rem;
+            .modal-icon-badge {
+                width: 60px;
+                height: 60px;
+                background: rgba(255, 255, 255, 0.2);
+                border: 2px solid rgba(255, 255, 255, 0.35);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 1rem;
+
+                i {
+                    font-size: 1.75rem;
+                }
             }
 
             h3 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
                 font-weight: 700;
-                color: #2c3e50;
-                margin-bottom: 0.75rem;
+                margin-bottom: 0.5rem;
             }
 
             .modal-description {
-                font-size: 0.95rem;
-                color: #7f8c8d;
+                font-size: 0.9rem;
+                opacity: 0.88;
                 line-height: 1.6;
                 margin: 0;
             }
