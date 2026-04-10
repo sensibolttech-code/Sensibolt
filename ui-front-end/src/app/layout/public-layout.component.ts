@@ -11,6 +11,7 @@ export interface ServiceSubItem {
 export interface ServiceCategory {
     label: string;
     icon: string;
+    slug: string;
     subItems: ServiceSubItem[];
 }
 
@@ -23,57 +24,85 @@ export interface ServiceCategory {
 })
 export class PublicLayoutComponent {
 
+    logoUrl: string = 'assets/images/Sensibolt-logo.png';
     activeCategoryIndex = 0;
 
     serviceCategories: ServiceCategory[] = [
         {
-            label: 'Service Desk',
-            icon: 'pi-headphones',
-            subItems: [
-                { label: 'Incident Management', icon: 'pi-exclamation-circle', description: 'Log, track and resolve incidents fast' },
-                { label: 'Service Requests', icon: 'pi-file-edit', description: 'Manage end-user service requests' },
-                { label: 'Self-Service Portal', icon: 'pi-user', description: 'Empower users with self-help options' },
-                { label: 'Live Chat Support', icon: 'pi-comments', description: 'Real-time agent-assisted support' },
-            ]
-        },
-        {
-            label: 'IT Operations',
-            icon: 'pi-cog',
-            subItems: [
-                { label: 'Change Management', icon: 'pi-refresh', description: 'Plan and govern all IT changes' },
-                { label: 'Problem Management', icon: 'pi-search', description: 'Identify and eliminate root causes' },
-                { label: 'Event Management', icon: 'pi-bell', description: 'Monitor and respond to IT events' },
-                { label: 'Release Management', icon: 'pi-send', description: 'Coordinate software and hardware releases' },
-            ]
-        },
-        {
-            label: 'Asset & CMDB',
+            label: 'Digital Workplace',
             icon: 'pi-desktop',
+            slug: 'digital-workplace',
             subItems: [
-                { label: 'Asset Management', icon: 'pi-desktop', description: 'Track hardware and software assets' },
-                { label: 'CMDB', icon: 'pi-sitemap', description: 'Configuration item relationships' },
-                { label: 'Software Licenses', icon: 'pi-id-card', description: 'Manage license compliance' },
-                { label: 'Procurement', icon: 'pi-shopping-cart', description: 'Streamline IT procurement workflows' },
+                { label: 'Service Desk', icon: 'pi-headphones', description: 'Fast, reliable support for everyday IT issues' },
+                { label: 'End-User Support', icon: 'pi-user', description: 'Assist users across devices and environments' },
+                { label: 'Device & Endpoint Management', icon: 'pi-desktop', description: 'Secure and manage all user devices centrally' },
+                { label: 'Collaboration Tools', icon: 'pi-comments', description: 'Enable seamless communication and teamwork' },
+                { label: 'Identity & Access Management', icon: 'pi-lock', description: 'Control secure access to systems and data' },
+                { label: 'Remote Work Enablement', icon: 'pi-wifi', description: 'Empower teams to work from anywhere securely' },
             ]
         },
         {
-            label: 'Knowledge & Docs',
-            icon: 'pi-book',
+            label: 'Digital Infrastructure',
+            icon: 'pi-server',
+            slug: 'digital-infrastructure',
             subItems: [
-                { label: 'Knowledge Base', icon: 'pi-book', description: 'Centralized IT knowledge repository' },
-                { label: 'Documentation', icon: 'pi-file', description: 'Technical and process documentation' },
-                { label: 'FAQs & Guides', icon: 'pi-question-circle', description: 'Step-by-step guides for common tasks' },
-                { label: 'Training Portal', icon: 'pi-graduation-cap', description: 'Onboarding and skill-building resources' },
+                { label: 'Cloud Infrastructure', icon: 'pi-cloud', description: 'Scalable cloud environments tailored to your needs' },
+                { label: 'Server & Storage', icon: 'pi-server', description: 'Reliable data storage and compute management' },
+                { label: 'Network & Connectivity', icon: 'pi-sitemap', description: 'Secure and high-performance network setup' },
+                { label: 'Virtualization', icon: 'pi-desktop', description: 'Optimize resources with virtual environments' },
+                { label: 'Backup & Disaster Recovery', icon: 'pi-cloud-upload', description: 'Protect and recover critical business data' },
+                { label: 'Infrastructure Monitoring', icon: 'pi-chart-bar', description: 'Real-time visibility into system performance' },
             ]
         },
         {
-            label: 'Semiconductor',
+            label: 'Managed IT Services',
+            icon: 'pi-headphones',
+            slug: 'managed-it',
+            subItems: [
+                { label: '24×7 IT Support', icon: 'pi-clock', description: 'Round-the-clock monitoring and issue resolution' },
+                { label: 'Remote Infrastructure Mgmt', icon: 'pi-desktop', description: 'Manage systems without on-site dependency' },
+                { label: 'Managed Workplace', icon: 'pi-briefcase', description: 'End-to-end user environment management' },
+                { label: 'Managed Security', icon: 'pi-shield', description: 'Continuous protection against cyber threats' },
+                { label: 'Application Management', icon: 'pi-cog', description: 'Keep business apps running smoothly' },
+                { label: 'SLA Management', icon: 'pi-check-circle', description: 'Ensure performance with defined service levels' },
+            ]
+        },
+        {
+            label: 'Audit & Compliance',
+            icon: 'pi-shield',
+            slug: 'audit-compliance',
+            subItems: [
+                { label: 'IT Audit', icon: 'pi-search', description: 'Evaluate IT systems against best practices' },
+                { label: 'Vulnerability Assessment', icon: 'pi-exclamation-circle', description: 'Identify and prioritize security risks' },
+                { label: 'Patch Compliance', icon: 'pi-refresh', description: 'Ensure systems are updated and secure' },
+                { label: 'Risk Assessment', icon: 'pi-chart-bar', description: 'Analyze and mitigate operational risks' },
+                { label: 'Regulatory Compliance', icon: 'pi-file', description: 'Meet industry and legal standards' },
+                { label: 'Policy Documentation', icon: 'pi-book', description: 'Define and maintain IT governance policies' },
+            ]
+        },
+        {
+            label: 'Data Analytics',
+            icon: 'pi-chart-bar',
+            slug: 'data-analytics',
+            subItems: [
+                { label: 'Data Dashboards', icon: 'pi-chart-bar', description: 'Visualize business data in real time' },
+                { label: 'Business Intelligence', icon: 'pi-desktop', description: 'Turn data into actionable insights' },
+                { label: 'Reporting Automation', icon: 'pi-send', description: 'Generate reports without manual effort' },
+                { label: 'Data Integration', icon: 'pi-sitemap', description: 'Unify data from multiple sources' },
+                { label: 'KPI Tracking', icon: 'pi-tag', description: 'Monitor business performance effectively' },
+                { label: 'Predictive Analytics', icon: 'pi-search', description: 'Forecast trends using advanced models' },
+            ]
+        },
+        {
+            label: 'SMT Manufacturing',
             icon: 'pi-microchip',
+            slug: 'smt-manufacturing',
             subItems: [
-                { label: 'Wafer Fabrication', icon: 'pi-cog', description: 'Fab operations and yield management' },
-                { label: 'EDA & IC Design', icon: 'pi-desktop', description: 'EDA tool and compute cluster management' },
-                { label: 'Supply Chain', icon: 'pi-sitemap', description: 'Global semiconductor logistics visibility' },
-                { label: 'Quality Management', icon: 'pi-check-circle', description: 'Defect tracking and quality assurance' },
+                { label: 'PCB Assembly', icon: 'pi-microchip', description: 'High-precision SMT and THT assembly services' },
+                { label: 'Prototyping', icon: 'pi-cog', description: 'Rapid development from concept to prototype' },
+                { label: 'Testing & QA', icon: 'pi-check-circle', description: 'Ensure quality through rigorous testing' },
+                { label: 'EMS Solutions', icon: 'pi-briefcase', description: 'End-to-end electronics manufacturing services' },
+                { label: 'Embedded Integration', icon: 'pi-desktop', description: 'Integrate hardware with intelligent systems' },
             ]
         },
     ];
@@ -84,7 +113,7 @@ export class PublicLayoutComponent {
 
     constructor(private router: Router) { }
 
-    navigateToServices(): void {
-        this.router.navigate(['/public/services']);
+    navigateToCategory(slug: string): void {
+        this.router.navigate(['/public/services', slug]);
     }
 }

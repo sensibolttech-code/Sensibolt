@@ -1,0 +1,109 @@
+@if (category) {
+<div class="service-category-page">
+
+    <!-- ── Hero ────────────────────────────────────────────────── -->
+    <section class="category-hero" [style.background]="category.gradient">
+        <div class="container py-5">
+            <div class="text-center text-white">
+                <div class="hero-icon-circle mx-auto mb-4">
+                    <i class="pi {{ category.heroIcon }}"></i>
+                </div>
+                <h1 class="hero-title">{{ category.title }}</h1>
+                <p class="hero-tagline">{{ category.tagline }}</p>
+                <a routerLink="/auth/signin" class="btn btn-light btn-lg mt-4 px-4">
+                    <i class="pi pi-sign-in me-2"></i>Get Started Free
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Services Grid ────────────────────────────────────────── -->
+    <section class="services-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">What We Offer</h2>
+                <p class="section-subtitle text-muted">
+                    Comprehensive solutions tailored to your business needs
+                </p>
+            </div>
+            <div class="row g-4">
+                @for (service of category.services; track service.title) {
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card h-100" [style.--sc-accent]="category.accentColor"
+                        [style.--sc-icon-bg]="category.iconBg">
+                        <div class="service-icon-wrapper">
+                            <i class="pi {{ service.icon }}"></i>
+                        </div>
+                        <h4 class="service-title">{{ service.title }}</h4>
+                        <p class="service-description">{{ service.description }}</p>
+                        <a routerLink="/auth/signin" class="get-started-link">
+                            Get Started <i class="pi pi-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Why Sensibolt ────────────────────────────────────────── -->
+    <section class="why-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Why Sensibolt?</h2>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4 col-lg-3">
+                    <div class="why-card text-center">
+                        <i class="pi pi-clock why-icon"></i>
+                        <h6>24×7 Coverage</h6>
+                        <p class="text-muted small">Round-the-clock expert support whenever you need it</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="why-card text-center">
+                        <i class="pi pi-shield why-icon"></i>
+                        <h6>Enterprise Security</h6>
+                        <p class="text-muted small">Built with security-first principles at every layer</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="why-card text-center">
+                        <i class="pi pi-chart-bar why-icon"></i>
+                        <h6>Data-Driven</h6>
+                        <p class="text-muted small">Real-time insights and analytics to guide decisions</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="why-card text-center">
+                        <i class="pi pi-users why-icon"></i>
+                        <h6>Dedicated Team</h6>
+                        <p class="text-muted small">Certified engineers focused on your outcomes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CTA ──────────────────────────────────────────────────── -->
+    <section class="cta-section py-5" [style.background]="category.gradient">
+        <div class="container text-center text-white">
+            <h2 class="cta-title">Ready to get started with {{ category.title }}?</h2>
+            <p class="cta-subtitle opacity-75 mt-2">
+                Join businesses that trust Sensibolt to run their IT operations.
+            </p>
+            <div class="mt-4 d-flex justify-content-center gap-3 flex-wrap">
+                <a routerLink="/auth/signin" class="btn btn-light btn-lg px-4">Sign In</a>
+                <a routerLink="/public/about" class="btn btn-outline-light btn-lg px-4">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+</div>
+} @else if (notFound) {
+<div class="not-found d-flex flex-column align-items-center justify-content-center py-5">
+    <i class="pi pi-exclamation-circle" style="font-size:3rem;color:#94a3b8"></i>
+    <h3 class="mt-3 text-muted">Service Category Not Found</h3>
+    <a routerLink="/public/services" class="btn btn-primary mt-3">Browse All Services</a>
+</div>
+}
