@@ -17,129 +17,40 @@
                             aria-label="Slide 3"></button>
                         <button type="button" data-bs-target="#heroBannerCarousel" data-bs-slide-to="3"
                             aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#heroBannerCarousel" data-bs-slide-to="4"
+                            aria-label="Slide 5"></button>
+                        <button type="button" data-bs-target="#heroBannerCarousel" data-bs-slide-to="5"
+                            aria-label="Slide 6"></button>
                     </div>
 
                     <!-- Slides -->
                     <div class="carousel-inner">
-                        <!-- Slide 1 -->
-                        <div class="carousel-item active">
-                            <div class="hero-slide slide-1">
+                        @for (slide of carouselSlides; track $index) {
+                        <div class="carousel-item" [class.active]="$index === 0">
+                            <div class="hero-slide" [style.background]="slide.gradient">
                                 <div class="container h-100">
                                     <div class="row align-items-center h-100">
                                         <div class="col-lg-7 hero-content">
-                                            <span class="hero-badge">Semiconductor Solutions</span>
-                                            <h1 class="hero-title">Powering the Future of<br><span
-                                                    class="highlight">Semiconductor Innovation</span></h1>
+                                            <span class="hero-badge">{{ slide.badge }}</span>
+                                            <h1 class="hero-title">{{ slide.title }}</h1>
                                             <p class="hero-subtitle">
-                                                End-to-end IT service management tailored for semiconductor design,
-                                                fabrication, and supply chain operations.
+                                                {{ slide.subtitle }}
                                             </p>
                                             <div class="hero-buttons">
-                                                <a routerLink="/auth/signin" class="btn btn-primary btn-lg me-3">Get
-                                                    Started</a>
-                                                <a routerLink="/public/services"
-                                                    class="btn btn-outline-light btn-lg">Explore Services</a>
+                                                <a [routerLink]="slide.button1Link" class="btn btn-primary btn-lg me-3">{{ slide.button1Text }}</a>
+                                                <a [routerLink]="slide.button2Link" class="btn btn-outline-light btn-lg">{{ slide.button2Text }}</a>
                                             </div>
                                         </div>
                                         <div class="col-lg-5 d-none d-lg-flex justify-content-center">
                                             <div class="slide-icon-wrapper">
-                                                <i class="pi pi-microchip slide-icon"></i>
+                                                <i class="pi {{ slide.icon }} slide-icon"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Slide 2 -->
-                        <div class="carousel-item">
-                            <div class="hero-slide slide-2">
-                                <div class="container h-100">
-                                    <div class="row align-items-center h-100">
-                                        <div class="col-lg-7 hero-content">
-                                            <span class="hero-badge">Wafer Fabrication</span>
-                                            <h1 class="hero-title">Streamlining<br><span class="highlight">Fab
-                                                    Operations & Yield Management</span></h1>
-                                            <p class="hero-subtitle">
-                                                Intelligent incident and change management for wafer fabs — minimize
-                                                downtime, maximize throughput and yield.
-                                            </p>
-                                            <div class="hero-buttons">
-                                                <a routerLink="/auth/signin" class="btn btn-primary btn-lg me-3">Get
-                                                    Started</a>
-                                                <a routerLink="/public/services"
-                                                    class="btn btn-outline-light btn-lg">Explore Services</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-5 d-none d-lg-flex justify-content-center">
-                                            <div class="slide-icon-wrapper">
-                                                <i class="pi pi-cog slide-icon"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide 3 -->
-                        <div class="carousel-item">
-                            <div class="hero-slide slide-3">
-                                <div class="container h-100">
-                                    <div class="row align-items-center h-100">
-                                        <div class="col-lg-7 hero-content">
-                                            <span class="hero-badge">EDA & Design</span>
-                                            <h1 class="hero-title">Accelerating<br><span class="highlight">IC Design &
-                                                    EDA Workflows</span></h1>
-                                            <p class="hero-subtitle">
-                                                Seamless service request and asset management for EDA tool licensing,
-                                                compute clusters, and chip design environments.
-                                            </p>
-                                            <div class="hero-buttons">
-                                                <a routerLink="/auth/signin" class="btn btn-primary btn-lg me-3">Get
-                                                    Started</a>
-                                                <a routerLink="/public/services"
-                                                    class="btn btn-outline-light btn-lg">Explore Services</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-5 d-none d-lg-flex justify-content-center">
-                                            <div class="slide-icon-wrapper">
-                                                <i class="pi pi-desktop slide-icon"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide 4 -->
-                        <div class="carousel-item">
-                            <div class="hero-slide slide-4">
-                                <div class="container h-100">
-                                    <div class="row align-items-center h-100">
-                                        <div class="col-lg-7 hero-content">
-                                            <span class="hero-badge">Supply Chain</span>
-                                            <h1 class="hero-title">Resilient<br><span class="highlight">Semiconductor
-                                                    Supply Chain Management</span></h1>
-                                            <p class="hero-subtitle">
-                                                Real-time visibility and proactive problem management across global
-                                                semiconductor procurement and logistics networks.
-                                            </p>
-                                            <div class="hero-buttons">
-                                                <a routerLink="/auth/signin" class="btn btn-primary btn-lg me-3">Get
-                                                    Started</a>
-                                                <a routerLink="/public/services"
-                                                    class="btn btn-outline-light btn-lg">Explore Services</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-5 d-none d-lg-flex justify-content-center">
-                                            <div class="slide-icon-wrapper">
-                                                <i class="pi pi-sitemap slide-icon"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        }
                     </div>
 
                     <!-- Controls -->
