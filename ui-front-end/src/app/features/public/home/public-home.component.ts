@@ -29,6 +29,7 @@ interface CarouselSlide {
     button2Link: string;
     imageUrl: string;
     gradient: string;
+    circleImageUrl: string; // AI-generated HD image for circle
 }
 
 @Component({
@@ -49,8 +50,9 @@ export class PublicHomeComponent {
             button1Link: '/public/services/digital-workplace',
             button2Text: 'Get Started',
             button2Link: '/auth/signin',
-            imageUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=500&fit=crop',
-            gradient: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)'
+            imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=800&fit=crop',
+            gradient: 'linear-gradient(135deg, rgba(30, 58, 138, 0.85) 0%, rgba(59, 130, 246, 0.85) 100%)',
+            circleImageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop'
         },
         {
             badge: 'Digital Infrastructure',
@@ -61,8 +63,9 @@ export class PublicHomeComponent {
             button1Link: '/public/services/digital-infrastructure',
             button2Text: 'Get Started',
             button2Link: '/auth/signin',
-            imageUrl: 'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&h=500&fit=crop',
-            gradient: 'linear-gradient(135deg, #064e3b 0%, #059669 100%)'
+            imageUrl: 'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=1200&h=800&fit=crop',
+            gradient: 'linear-gradient(135deg, rgba(6, 78, 59, 0.85) 0%, rgba(5, 150, 105, 0.85) 100%)',
+            circleImageUrl: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=400&fit=crop'
         },
         {
             badge: 'Managed IT Services',
@@ -73,8 +76,9 @@ export class PublicHomeComponent {
             button1Link: '/public/services/managed-it',
             button2Text: 'Get Started',
             button2Link: '/auth/signin',
-            imageUrl: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=500&fit=crop',
-            gradient: 'linear-gradient(135deg, #4c1d95 0%, #7c3aed 100%)'
+            imageUrl: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=800&fit=crop',
+            gradient: 'linear-gradient(135deg, rgba(76, 29, 149, 0.85) 0%, rgba(124, 58, 237, 0.85) 100%)',
+            circleImageUrl: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=400&fit=crop'
         },
         {
             badge: 'Audit & Compliance',
@@ -85,8 +89,9 @@ export class PublicHomeComponent {
             button1Link: '/public/services/audit-compliance',
             button2Text: 'Get Started',
             button2Link: '/auth/signin',
-            imageUrl: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=500&fit=crop',
-            gradient: 'linear-gradient(135deg, #1e3a8a 0%, #0891b2 100%)'
+            imageUrl: 'https://images.unsplash.com/photo-1614694267537-b85ca80c78bc?w=1200&h=800&fit=crop',
+            gradient: 'linear-gradient(135deg, rgba(30, 58, 138, 0.85) 0%, rgba(8, 145, 178, 0.85) 100%)',
+            circleImageUrl: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=400&fit=crop'
         },
         {
             badge: 'Data Analytics & Reporting',
@@ -97,8 +102,9 @@ export class PublicHomeComponent {
             button1Link: '/public/services/data-analytics',
             button2Text: 'Get Started',
             button2Link: '/auth/signin',
-            imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop',
-            gradient: 'linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%)'
+            imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop',
+            gradient: 'linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(29, 78, 216, 0.85) 100%)',
+            circleImageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=400&fit=crop'
         },
         {
             badge: 'SMT Manufacturing',
@@ -109,8 +115,9 @@ export class PublicHomeComponent {
             button1Link: '/public/services/smt-manufacturing',
             button2Text: 'Get Started',
             button2Link: '/auth/signin',
-            imageUrl: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&h=500&fit=crop',
-            gradient: 'linear-gradient(135deg, #1c1917 0%, #92400e 100%)'
+            imageUrl: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1200&h=800&fit=crop',
+            gradient: 'linear-gradient(135deg, rgba(28, 25, 23, 0.85) 0%, rgba(146, 64, 14, 0.85) 100%)',
+            circleImageUrl: 'https://images.unsplash.com/photo-1562408590-e32931084e23?w=400&h=400&fit=crop&q=80'
         }
     ];
     recentPosts: BlogPost[] = [

@@ -27,7 +27,8 @@
                     <div class="carousel-inner">
                         @for (slide of carouselSlides; track $index) {
                         <div class="carousel-item" [class.active]="$index === 0">
-                            <div class="hero-slide" [style.background]="slide.gradient">
+                            <div class="hero-slide" [style.backgroundImage]="'url(' + slide.imageUrl + ')'">
+                                <div class="hero-slide-overlay" [style.background]="slide.gradient"></div>
                                 <div class="container h-100">
                                     <div class="row align-items-center h-100">
                                         <div class="col-lg-7 hero-content">
@@ -42,8 +43,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-5 d-none d-lg-flex justify-content-center">
-                                            <div class="slide-icon-wrapper">
-                                                <i class="pi {{ slide.icon }} slide-icon"></i>
+                                            <div class="slide-icon-wrapper" [style.backgroundImage]="'url(' + slide.circleImageUrl + ')'">
                                             </div>
                                         </div>
                                     </div>
